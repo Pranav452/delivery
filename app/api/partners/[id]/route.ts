@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import supabase from '@/lib/supabase';
-import type { DeliveryPartner } from '@/types';
 
-export async function GET(request: Request) {
+export async function GET(_request: Request) {
   try {
     const { data } = await supabase
       .from('partners')
