@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚚 Smart Delivery Management System
 
-## Getting Started
+A modern, efficient delivery management platform built with Next.js 14, TypeScript, and Supabase.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 📦 **Order Management**
+  - Create and track delivery orders
+  - Real-time status updates
+  - Customer information management
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 👥 **Delivery Partner Management**
+  - Partner profiles and performance metrics
+  - Area-based assignment
+  - Success rate tracking
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 📍 **Assignment System**
+  - Smart order-to-partner matching
+  - Real-time delivery tracking
+  - Performance analytics
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🎨 **Modern UI/UX**
+  - Glass morphism design
+  - Responsive layout
+  - Dark mode support
+  - Smooth animations
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**:
+  - Next.js 14 (App Router)
+  - TypeScript
+  - Tailwind CSS
+  - Radix UI Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Backend**:
+  - Supabase (PostgreSQL)
+  - Row Level Security
+  - Real-time subscriptions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js 18+ installed
+- Supabase account
+- Git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/pranav452/delivery-management-system.git
+   cd delivery-management-system
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   - Copy `.env.example` to `.env.local`
+   ```bash
+   cp .env.example .env.local
+   ```
+   - Update Supabase credentials in `.env.local`:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. **Database Setup**
+   - Run the SQL scripts in `database/schema.sql` in your Supabase SQL editor
+   - This will create the necessary tables and sample data
+
+5. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open the application**
+   - Visit [http://localhost:3000](http://localhost:3000)
+   - Login with the default credentials or create a new account
+
+## 📱 Usage Guide
+
+### Dashboard
+- View key metrics and statistics
+- Quick access to all features
+- Real-time updates
+
+### Orders
+- Create new delivery orders
+- Track order status
+- View delivery history
+
+### Delivery Partners
+- Manage partner profiles
+- View performance metrics
+- Track active deliveries
+
+### Assignments
+- Assign orders to partners
+- Monitor delivery progress
+- View assignment history
+
+## 🔒 Security
+
+- Row Level Security (RLS) enabled
+- Secure authentication flow
+- Environment variable protection
+- Input validation and sanitization
+
+## 🎯 Future Enhancements
+
+- [ ] Mobile application
+- [ ] Advanced analytics dashboard
+- [ ] Route optimization
+- [ ] Customer feedback system
+- [ ] Integration with mapping services
+- [ ] Push notifications
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License 
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Supabase team for the backend infrastructure
+- All contributors and users of this system
+
+---
+
+Made with ❤️ by Pranav Nair
