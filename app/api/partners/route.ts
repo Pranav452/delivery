@@ -12,6 +12,7 @@ export async function GET() {
 
     return NextResponse.json({ partners: data });
   } catch (error) {
+    console.error('Failed to fetch partners:', error);
     return NextResponse.json({ error: 'Failed to fetch partners' }, { status: 500 });
   }
 }

@@ -82,7 +82,7 @@ export const BackgroundGradientAnimation = ({
     }
  
     move();
-  }, [curX, curY]);
+  }, [curX, curY, tgX, tgY]);
  
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
