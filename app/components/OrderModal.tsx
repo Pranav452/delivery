@@ -30,6 +30,11 @@ const initialOrderState: Order = {
   status: 'pending',
 };
 
+interface ApiError {
+  message: string;
+  status?: number;
+}
+
 export default function OrderModal({ isOpen, onClose, order, onSuccess }: OrderModalProps) {
   const [formData, setFormData] = useState<Order>(initialOrderState);
   const [loading, setLoading] = useState(false);
@@ -69,8 +74,10 @@ export default function OrderModal({ isOpen, onClose, order, onSuccess }: OrderM
       onSuccess();
       onClose();
       setFormData(initialOrderState);
-    } catch (err: any) {
-      setError(err.message || 'Failed to save order');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Error creating order:', apiError);
+      setError(apiError.message || 'Failed to create order');
     } finally {
       setLoading(false);
     }

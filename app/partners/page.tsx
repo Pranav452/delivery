@@ -16,6 +16,11 @@ interface Partner {
   success_rate: number;
 }
 
+interface ApiError {
+  message: string;
+  status?: number;
+}
+
 export default function PartnersPage() {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
@@ -91,9 +96,10 @@ export default function PartnersPage() {
         area: '',
         status: 'active',
       });
-    } catch (error: any) {
-      console.error('Error saving partner:', error);
-      setError(error.message || 'Failed to save partner');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Error saving partner:', apiError);
+      setError(apiError.message || 'Failed to save partner');
     }
   }
 

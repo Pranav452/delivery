@@ -4,12 +4,9 @@ import type { AssignmentMetrics } from '@/types';
 
 export async function GET() {
   try {
-    // Fetch all assignments
-    const { data: assignments, error } = await supabase
+    const { data: assignments } = await supabase
       .from('assignments')
       .select('*');
-
-    if (error) throw error;
 
     // Calculate metrics
     const totalAssigned = assignments?.length || 0;
@@ -44,7 +41,8 @@ export async function GET() {
     };
 
     return NextResponse.json({ metrics });
-  } catch (error) {
+  } catch (err) {
+    console.error('Failed to fetch metrics:', err);
     return NextResponse.json({ error: 'Failed to fetch metrics' }, { status: 500 });
   }
 }

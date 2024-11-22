@@ -3,6 +3,11 @@
 import { useState } from 'react';
 import type { DeliveryPartner } from '@/types';
 
+interface ApiError {
+  message: string;
+  status?: number;
+}
+
 interface PartnerFormProps {
   onSubmit: (partner: Partial<DeliveryPartner>) => Promise<void>;
   initialData?: Partial<DeliveryPartner>;
@@ -37,8 +42,10 @@ export default function PartnerForm({ onSubmit, initialData }: PartnerFormProps)
     try {
       await onSubmit(formData);
       setError('');
-    } catch (err) {
-      setError('Failed to save partner');
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Error saving partner:', apiError);
+      setError(apiError.message || 'Failed to save partner');
     }
   };
 

@@ -2,23 +2,32 @@ import { NextResponse } from 'next/server';
 import supabase from '@/lib/supabase';
 import type { DeliveryPartner } from '@/types';
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request) {
   try {
-    const updates: Partial<DeliveryPartner> = await request.json();
-    const { data, error } = await supabase
-      .from('delivery_partners')
-      .update(updates)
-      .eq('_id', params.id)
+    const { data } = await supabase
+      .from('partners')
+      .select('*')
+      .single();
+
+    return NextResponse.json({ partner: data });
+  } catch (err) {
+    console.error('Failed to fetch partner:', err);
+    return NextResponse.json({ error: 'Failed to fetch partner' }, { status: 500 });
+  }
+}
+
+export async function PUT(request: Request) {
+  try {
+    const partner = await request.json();
+    const { data } = await supabase
+      .from('partners')
+      .update(partner)
       .select()
       .single();
 
-    if (error) throw error;
-
     return NextResponse.json({ partner: data });
-  } catch (error) {
+  } catch (err) {
+    console.error('Failed to update partner:', err);
     return NextResponse.json({ error: 'Failed to update partner' }, { status: 500 });
   }
 }
